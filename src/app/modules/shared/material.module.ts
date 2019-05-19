@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { getRusPaginatorIntl } from '../rus-paginator-intl';
-import { DatePipe } from '@angular/common';
 
 import {
   MatAutocompleteModule,
@@ -38,9 +36,8 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
-  MatPaginatorIntl, MAT_DATE_LOCALE, DateAdapter
 } from '@angular/material';
-import { CustomDateAdapterModule } from './custom-date-adapter.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -79,6 +76,7 @@ import { CustomDateAdapterModule } from './custom-date-adapter.module';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    FlexLayoutModule
   ],
   exports: [
     MatAutocompleteModule,
@@ -116,13 +114,7 @@ import { CustomDateAdapterModule } from './custom-date-adapter.module';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-  ],
-  providers: [
-    {provide: DateAdapter, useClass: CustomDateAdapterModule},
-    {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'},
-    {provide: MatPaginatorIntl, useValue: getRusPaginatorIntl()},
-    DatePipe
+    FlexLayoutModule
   ]
 })
-export class MaterialModule {
-}
+export class MaterialModule { }
