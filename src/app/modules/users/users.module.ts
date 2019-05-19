@@ -7,7 +7,9 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
-  declarations: [UsersListComponent, UserDetailComponent],
+  declarations: [
+    UsersListComponent,
+    UserDetailComponent],
   imports: [
     CommonModule,
     SharedModule,

@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableGridComponent } from './view/table-grid/table-grid.component';
-import { UserDitailComponent } from './view/user-ditail/user-ditail.component';
 import { MaterialModule } from './material.module';
+import { CardUserComponent } from './view/card-user/card-user.component';
 
 @NgModule({
-  declarations: [TableGridComponent, UserDitailComponent],
+  declarations: [
+    TableGridComponent,
+    CardUserComponent,
+  ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
   ],
   exports: [
-    MaterialModule
+    MaterialModule,
+    TableGridComponent,
+    CardUserComponent,
   ]
 })
 export class SharedModule { }

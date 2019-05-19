@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { selectSelectedUser } from '../../../store/selectors/user.selector';
+import { IAppState } from '../../../store/state/app.state';
+import { ActivatedRoute } from '@angular/router';
+import { GetUser } from '../../../store/actions/user.actions';
 
 @Component({
   selector: 'app-user-detail',
@@ -7,9 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailComponent implements OnInit {
 
-  constructor() { }
+  user$ = this._store.pipe(select(selectSelectedUser));
+
+  constructor(
+    private _store: Store<IAppState>,
+    private _route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    this._store.dispatch(new GetUser(this._route.snapshot.params.id));
   }
 
 }

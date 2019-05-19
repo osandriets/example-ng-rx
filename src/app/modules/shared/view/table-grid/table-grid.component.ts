@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IUser } from '../../../../models/user.interface';
 
 @Component({
   selector: 'app-table-grid',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table-grid.component.scss']
 })
 export class TableGridComponent implements OnInit {
+  @Input()
+  users: IUser[];
+  @Output()
+  userSelected: EventEmitter<number> = new EventEmitter();
 
-  constructor() { }
+  displayedColumns: string[] = ['id', 'name', 'email'];
+
+  constructor() {}
 
   ngOnInit() {
+  }
+
+  navigateToUser(id: number) {
+    this.userSelected.emit(id);
   }
 
 }
