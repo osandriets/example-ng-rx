@@ -1,0 +1,42 @@
+<div fxLayoutAlign="space-around center">
+  <mat-card fxFlex="400px" *ngIf="user">
+    <mat-card-content>
+      <mat-card-title>{{ user.name }}</mat-card-title>
+      <div fxLayout="column" fxLayoutGap="20px">
+
+        <div fxLayout="row">
+          <div fxFlex="50">
+            UserName:
+          </div>
+          <div fxFlex="50">
+            {{ user.username }}<br>
+          </div>
+        </div>
+
+        <div fxLayout="row">
+          <div fxFlex="50">
+            Address:
+          </div>
+          <div fxFlex="50">
+            {{ user.address.street}}<br>
+            {{ user.address.suite}}<br>
+            {{ user.address.city}}<br>
+            {{ user.address.zipcode}}<br>
+          </div>
+        </div>
+
+        <div fxLayout="row">
+          <div fxFlex="50">
+            Company:
+          </div>
+          <div fxFlex="50">
+            {{ user.company.name}}<br>
+            {{ user.company.catchPhrase}}<br>
+            {{ user.company.bs}}<br>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
