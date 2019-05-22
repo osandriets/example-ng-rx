@@ -12,19 +12,20 @@ import { GetUsers } from '../../../store/actions/user.actions';
 })
 export class UsersListComponent implements OnInit {
 
-  users$ = this._store.pipe(select(selectUserList));
+  users$ = this.store.pipe(select(selectUserList));
 
   constructor(
-    private _store: Store<IAppState>,
-    private _router: Router) {
+    private store: Store<IAppState>,
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
-    this._store.dispatch(new GetUsers());
+    this.store.dispatch(new GetUsers());
   }
 
   navigateToUser(id: number) {
-    this._router.navigate(['users', id]);
+    this.router.navigate(['users', id]).then();
   }
 
 }

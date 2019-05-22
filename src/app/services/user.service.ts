@@ -9,13 +9,13 @@ import { IUserHttp } from '../models/http-models/user-http.interface';
 export class UserService {
   usersUrl = `${environment.apiUrl}users/`;
 
-  constructor(private _http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getUsers(): Observable<IUserHttp> {
-    return this._http.get<IUserHttp>(this.usersUrl);
+    return this.http.get<IUserHttp>(this.usersUrl);
   }
 
   getUser(id: number): Observable<IUserHttp> {
-    return this._http.get<IUserHttp>(this.usersUrl + '2/');
+    return this.http.get<IUserHttp>(this.usersUrl + '/' + id);
   }
 }

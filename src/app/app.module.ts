@@ -27,7 +27,7 @@ import { SharedModule } from './modules/shared/shared.module';
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     AppRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IUser } from '../../../../models/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-user',
@@ -10,9 +11,14 @@ export class CardUserComponent implements OnInit {
   @Input()
   user: IUser;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
+  navigateBack() {
+    this.router.navigate(['users']).then();
+  }
 }

@@ -1,7 +1,7 @@
 <div fxLayoutAlign="space-around center">
   <mat-card fxFlex="400px" *ngIf="user">
     <mat-card-content>
-      <mat-card-title>{{ user.name }}</mat-card-title>
+      <mat-card-title>{{ user.id }}: {{ user.name }}</mat-card-title>
       <div fxLayout="column" fxLayoutGap="20px">
 
         <div fxLayout="row">
@@ -37,6 +37,8 @@
         </div>
       </div>
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-button type="button" (click)="navigateBack()">Back</button>
+    </mat-card-actions>
   </mat-card>
 </div>
-
