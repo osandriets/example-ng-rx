@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
-import { IUserHttp } from '../models/http-models/user-http.interface';
+import { IUser } from '../models/user.interface';
 
 @Injectable()
 export class UserService {
@@ -11,11 +11,11 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<IUserHttp> {
-    return this.http.get<IUserHttp>(this.usersUrl);
+  getUsers(): Observable<IUser[]> {
+    return this.http.get<IUser[]>(this.usersUrl);
   }
 
-  getUser(id: number): Observable<IUserHttp> {
-    return this.http.get<IUserHttp>(this.usersUrl + '/' + id);
+  getUser(id: number): Observable<IUser> {
+    return this.http.get<IUser>(this.usersUrl + '/' + id);
   }
 }

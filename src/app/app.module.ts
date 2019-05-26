@@ -8,9 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { environment } from '../environments/environment';
-import { appReducers } from './store/reducers/app.reducers';
+import { appReducers, metaReducers } from './store/reducers/app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { UserEffects } from './store/effects/user.effects';
 import { ConfigEffects } from './store/effects/config.effects';
 import { UserService } from './services/user.service';
 import { SharedModule } from './modules/shared/shared.module';
@@ -22,8 +21,8 @@ import { SharedModule } from './modules/shared/shared.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([UserEffects, ConfigEffects]),
+    StoreModule.forRoot(appReducers, { metaReducers }),
+    EffectsModule.forRoot([ConfigEffects]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     AppRoutingModule,

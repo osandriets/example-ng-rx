@@ -1,16 +1,23 @@
-import { createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { IAppState } from '../state/app.state';
-import { IUserState } from '../state/user.state';
+import { IUserState } from '../reducers/user.reducers';
+import * as fromUser from '../reducers/user.reducers';
 
-const selectUsers = (state: IAppState) => state.users;
+export const selectUsers = createFeatureSelector<IUserState>('users');
+
+export const selectSelectedUser = (userId: number) => createSelector(
+  selectUsers,
+  state => state.entities[userId]
+);
 
 export const selectUserList = createSelector(
   selectUsers,
-  (state: IUserState) => state.users
+  fromUser.selectAll
 );
 
-export const selectSelectedUser = createSelector(
+export const allUsersLoaded = createSelector(
   selectUsers,
-  (state: IUserState) => state.selectedUser
+  state => state.allUsersLoaded
 );
+
+
